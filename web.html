@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Web Simple</title>
+  <meta name="description" content="Contoh website simple, cepat, dan responsif.">
+  <style>
+    :root{
+      --bg:#0f172a;      /* slate-900 */
+      --card:#111827;    /* gray-900  */
+      --muted:#9ca3af;   /* gray-400  */
+      --text:#e5e7eb;    /* gray-200  */
+      --brand:#22c55e;   /* green-500 */
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial;
+      background:linear-gradient(180deg,var(--bg),#0b1226);
+      color:var(--text);
+    }
+    a{color:inherit; text-decoration:none}
+    .container{max-width:1000px; margin-inline:auto; padding:20px}
+    header{
+      position:sticky; top:0; z-index:10;
+      backdrop-filter:blur(8px);
+      background:rgba(15,23,42,.6); border-bottom:1px solid rgba(255,255,255,.06)
+    }
+    .nav{display:flex; align-items:center; justify-content:space-between}
+    .brand{font-weight:700; letter-spacing:.5px}
+    .menu{display:flex; gap:16px}
+    .btn{
+      display:inline-block; padding:10px 14px; border-radius:12px;
+      border:1px solid rgba(255,255,255,.12);
+    }
+    .btn-primary{background:var(--brand); color:#052e16; border:none; font-weight:600}
+    .hero{
+      padding:64px 0; text-align:center;
+    }
+    .hero h1{font-size:clamp(28px,5vw,44px); margin:0 0 10px}
+    .hero p{color:var(--muted); margin:0 0 22px}
+    .grid{
+      display:grid; gap:16px;
+      grid-template-columns:repeat(3,1fr);
+    }
+    .card{
+      background:var(--card); border:1px solid rgba(255,255,255,.06);
+      border-radius:16px; padding:18px;
+    }
+    .card h3{margin:0 0 8px; font-size:18px}
+    .card p{margin:0; color:var(--muted); font-size:14px}
+    footer{
+      border-top:1px solid rgba(255,255,255,.06);
+      color:var(--muted); text-align:center; padding:24px 0; margin-top:40px
+    }
+    /* Responsif */
+    @media (max-width: 800px){
+      .grid{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width: 520px){
+      .menu{display:none}
+      .grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <header>
+    <div class="container nav" aria-label="Navigasi utama">
+      <a class="brand" href="#">Web Simple</a>
+      <nav class="menu">
+        <a class="btn" href="#fitur">Fitur</a>
+        <a class="btn" href="#tentang">Tentang</a>
+        <a class="btn btn-primary" href="#kontak">Kontak</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero container">
+    <h1>Bangun Website Sederhana & Elegan</h1>
+    <p>Template HTML 1 file — cepat, responsif, mudah diubah.</p>
+    <a class="btn btn-primary" href="#fitur">Lihat Fitur</a>
+  </section>
+
+  <!-- Fitur -->
+  <section id="fitur" class="container" aria-labelledby="judul-fitur">
+    <h2 id="judul-fitur" style="margin:0 0 14px;">Fitur Utama</h2>
+    <div class="grid">
+      <article class="card">
+        <h3>Ringan</h3>
+        <p>Hanya HTML + CSS, tanpa library eksternal.</p>
+      </article>
+      <article class="card">
+        <h3>Responsif</h3>
+        <p>Tampil rapi di HP maupun desktop.</p>
+      </article>
+      <article class="card">
+        <h3>Mudah Edit</h3>
+        <p>Ubah teks/warna sesuai kebutuhan.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Tentang -->
+  <section id="tentang" class="container" style="margin-top:36px" aria-labelledby="judul-tentang">
+    <h2 id="judul-tentang" style="margin:0 0 10px;">Tentang Template</h2>
+    <p class="card">
+      Template ini cocok untuk landing page, portofolio, atau halaman info singkat.
+      Cukup ganti judul, paragraf, dan item fitur. Tambah bagian lain dengan
+      menyalin elemen <code class="btn" style="border-radius:8px">.card</code> atau <code class="btn" style="border-radius:8px">.grid</code>.
+    </p>
+  </section>
+
+  <!-- Kontak -->
+  <section id="kontak" class="container" style="margin-top:36px" aria-labelledby="judul-kontak">
+    <h2 id="judul-kontak" style="margin:0 0 10px;">Kontak</h2>
+    <form class="card" onsubmit="event.preventDefault(); alert('Pesan terkirim!');">
+      <label>Nama<br><input required name="nama" style="width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,.12);background:#0b1226;color:var(--text)"></label><br><br>
+      <label>Email<br><input type="email" required name="email" style="width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,.12);background:#0b1226;color:var(--text)"></label><br><br>
+      <label>Pesan<br><textarea required name="pesan" rows="4" style="width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,.12);background:#0b1226;color:var(--text)"></textarea></label><br><br>
+      <button class="btn btn-primary" type="submit">Kirim</button>
+    </form>
+  </section>
+
+  <footer>
+    © <span id="year"></span> Web Simple. Dibuat dengan HTML & CSS.
+  </footer>
+
+  <script>
+    // Tahun otomatis di footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
